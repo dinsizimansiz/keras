@@ -27,7 +27,6 @@ from .memory_saving_gradients import  gradients_memory
 # Legacy functions
 from .common import set_image_dim_ordering
 from .common import image_dim_ordering
-tf.__dict__["gradients"] = gradients_memory
 py_all = all
 py_any = any
 py_sum = sum
@@ -2754,7 +2753,7 @@ def gradients(loss, variables):
     # Returns
         A gradients tensor.
     """
-    return tf.gradients(loss, variables, colocate_gradients_with_ops=True)
+    return gradients_memory(loss, variables, colocate_gradients_with_ops=True)
 
 
 def stop_gradient(variables):
