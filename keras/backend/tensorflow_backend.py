@@ -23,11 +23,11 @@ from .common import epsilon
 from .common import normalize_data_format
 from ..utils.generic_utils import transpose_shape
 from ..utils.generic_utils import has_arg
-
+from .memory_saving_gradients import  gradients_memory
 # Legacy functions
 from .common import set_image_dim_ordering
 from .common import image_dim_ordering
-
+tf.__dict__["gradients"] = gradients_memory
 py_all = all
 py_any = any
 py_sum = sum
